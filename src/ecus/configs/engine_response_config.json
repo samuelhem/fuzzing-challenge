@@ -1,0 +1,5 @@
+{
+  "responses": [
+    {"sessionId": 1, "securityLevel":  2, "response": "UDS() / UDS_RC(routineControlType=0x01, routineIdentifier=0x02"}
+  ]
+}

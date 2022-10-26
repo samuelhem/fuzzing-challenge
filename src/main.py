@@ -10,7 +10,7 @@ from ecus.Engine import Engine
 from scapy.contrib.automotive.uds import *
 from scapy.contrib.automotive.ecu import *
 from scapy.contrib.cansocket import CANSocket
-
+import threading
 
 from scapy.contrib.isotp import ISOTPSocket
 
@@ -23,7 +23,8 @@ conf.contribs['ISOTP'] = {'use-can-isotp-kernel-module': False}
 conf.contribs['CANSocket'] = {'use-python-can': False}
 
 def main():
-    sock = ISOTPSocket(CANSocket(socket="vcan0"), sid=0x700, did=0x600, basecls=UDS)
+    print(123)
+    sock = ISOTPSocket("vcan0", sid=0x700, did=0x600, basecls=UDS)
     engine = Engine().start(sock)
 
 
