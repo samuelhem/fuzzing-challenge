@@ -1,39 +1,22 @@
-from enum import Enum
 from scapy.packet import Packet
 from scapy.contrib.automotive.uds import *
+
+from .States import States
+from .DiagnosticSimulator import *
 
 
 # https://www.youtube.com/watch?v=z66WR7mfTMY
 
-def check_state(function, stateToBe):
+def is_state(function, stateToBe):
     if function.state == stateToBe:
-        print("Function `{}` is already Running".format(function.name))
-        return False
-    function.state = stateToBe
-    return "    Function `{}`: is now {}".format(function.name, stateToBe.name)
-
-class States(Enum):
-    UNDEFINED = 0x00
-    RUNNING = 0x01
-    FINISHED = 0x02
-    FINSIHED_WITH_ERROR = 0x03
-    STOPPED = 0x04
-
-    @staticmethod
-    def return_as_dict():
-        return {
-            0x00: 'UNDEFINED',
-            0x01: 'RUNNING',
-            0x02: 'FINISHED',
-            0x03: 'FINISHED_WITH_ERROR',
-            0x04: 'STOPPED'
-        }
+        return True
+    return False
 
 
 class Function:
     identifier = 0x00
     name = ""
-    state = States.UNDEFINED
+    state = States.FINISHED
 
     def __init__(self, name, identifier, state=None):
         self.name = name
@@ -42,10 +25,16 @@ class Function:
             self.state = state
 
     def start(self):
-        check_state(self, States.RUNNING)
+        if is_state(self, States.FINSIHED_WITH_ERROR):
+            return " Function that has Error cannot run again"
+        if not is_state(self, States.RUNNING):
+            return start_simulation(self)
 
     def stop(self):
-        check_state(self, States.STOPPED)
+        if is_state(self, States.RUNNING):
+            self.state = States.STOPPED
+        else:
+            return " Function that is not Running cannot be stopped"
 
     def status(self):
         return " {} currently {}".format(self.name, self.state.name)
@@ -54,9 +43,9 @@ class Function:
         if resp.routineIdentifier == req.routineIdentifier \
                 and resp.routineControlType == req.routineControlType:
             if req.routineControlType == 1:
-                self.start()
+                resp.message = self.start()
             elif req.routineControlType == 2:
-                self.stop()
+                resp.message = self.stop()
             elif req.routineControlType == 3:
                 resp.message = self.status()
             else:
@@ -74,6 +63,5 @@ class RC_SERVICE_PACKET(Packet):
         StrField('message', 0)
     ]
 
-#bind_layers(UDS_RCPR, RC_SERVICE_PACKET, routineIdentifier=)
-#UDS_RC.routineControlIdentifiers[0x05] = 'StatusPaket'
-
+# bind_layers(UDS_RCPR, RC_SERVICE_PACKET, routineIdentifier=)
+# UDS_RC.routineControlIdentifiers[0x05] = 'StatusPaket'

@@ -7,6 +7,10 @@
     {
       "name": "Check Engine Coolant Level",
       "identifier": "0x07"
+    },
+    {
+      "name": "Is Battery empty",
+      "identifier": "0x09"
     }
   ]
 }
