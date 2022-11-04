@@ -1,0 +1,12 @@
+{
+  "functions": [
+    {
+      "name": "Diagnose Engine Oil Level",
+      "identifier": "0x05"
+    },
+    {
+      "name": "Check Engine Coolant Level",
+      "identifier": "0x07"
+    }
+  ]
+}
