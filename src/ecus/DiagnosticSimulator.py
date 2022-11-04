@@ -10,7 +10,7 @@ def simulation(arg):
     arg.state = States.RUNNING
     x = 0
     # Constantly Check for State Changes to Stop the Simulation
-    while x < randint(5, 20):
+    while True:
         if arg.state == States.STOPPED:
             print("Sim is stopped")
             return
