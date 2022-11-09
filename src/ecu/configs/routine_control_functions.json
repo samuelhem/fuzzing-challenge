@@ -11,6 +11,10 @@
     {
       "name": "Is Battery empty",
       "identifier": "0x09"
+    },
+    {
+      "name": "Security Access Routine",
+      "identifier": "0xFF3D"
     }
   ]
 }

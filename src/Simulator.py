@@ -4,7 +4,7 @@ Simulate the UDS Protocol using the Scapy Framework
 
 from scapy.all import *
 from scapy.layers.can import *
-from ecus.Engine import Engine
+from ecu.Engine import Engine
 from scapy.contrib.automotive.uds import *
 from scapy.contrib.automotive.ecu import *
 from scapy.contrib.cansocket import CANSocket

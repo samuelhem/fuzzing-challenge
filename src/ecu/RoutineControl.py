@@ -6,11 +6,28 @@ from .DiagnosticSimulator import *
 
 
 # https://www.youtube.com/watch?v=z66WR7mfTMY
-
 def is_state(function, stateToBe):
     if function.state == stateToBe:
         return True
     return False
+
+
+def checkForSecurityState(request_packet):
+    # early exit if security function is called
+    if request_packet.routineIdentifier == 0xFF3D:
+        return True
+    security_access_func = None
+    # check if security function on id 0xFF3D is running
+    for f in functionList:
+        if f.identifier == '0xFF3D':
+            security_access_func = f
+    if security_access_func.state == States.RUNNING:
+        return True
+    else:
+        return False
+
+
+functionList = []
 
 
 class Function:
@@ -40,18 +57,23 @@ class Function:
         return " {} currently {}".format(self.name, self.state.name)
 
     def execute(self, resp, req):
+        # Check for SecurityAccess
         if resp.routineIdentifier == req.routineIdentifier \
                 and resp.routineControlType == req.routineControlType:
-            if req.routineControlType == 1:
-                resp.message = self.start()
-            elif req.routineControlType == 2:
-                resp.message = self.stop()
-            elif req.routineControlType == 3:
-                resp.message = self.status()
-            else:
+            if not checkForSecurityState(req):
+                print("NO ACCESS")
                 return False
-            resp.state = self.state.value
-            return resp.answers(req)
+            else:
+                if req.routineControlType == 1:
+                    resp.message = self.start()
+                elif req.routineControlType == 2:
+                    resp.message = self.stop()
+                elif req.routineControlType == 3:
+                    resp.message = self.status()
+                else:
+                    return False
+                resp.state = self.state.value
+                return resp.answers(req)
         else:
             return False
 

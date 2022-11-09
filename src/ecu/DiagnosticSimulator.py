@@ -8,6 +8,10 @@ def simulation(arg):
     # Basic Simulation
     print("Simulation now Running")
     arg.state = States.RUNNING
+
+    if arg.identifier == '0xFF3D':
+        print("SECURITY ACCESS GRANTED")
+
     x = 0
     # Constantly Check for State Changes to Stop the Simulation
     while True:
