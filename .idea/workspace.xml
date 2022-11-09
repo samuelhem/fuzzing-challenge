@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8eefc7dd-eb49-4f74-9e2c-f2fe7632f068" name="Changes" comment="progress">
-      <change afterPath="$PROJECT_DIR$/src/ecu/Util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fuzzing-challenge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fuzzing-challenge.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ecu/configs/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecus/DiagnosticSimulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecu/DiagnosticSimulator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecus/Engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecu/Engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecus/Fueltank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecu/Fueltank.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecus/RoutineControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecu/RoutineControl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecus/States.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecu/States.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecus/configs/routine_control_functions.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecu/configs/routine_control_functions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/misc/solution.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/misc/solution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ecu/DiagnosticSimulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecu/DiagnosticSimulator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ecu/RoutineControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecu/RoutineControl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ecu/configs/routine_control_functions.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecu/configs/routine_control_functions.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,14 +49,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/ecu/configs" />
       <recent name="$PROJECT_DIR$/src/ecu" />
       <recent name="$PROJECT_DIR$/src/ecus" />
       <recent name="$PROJECT_DIR$/src/misc" />
       <recent name="$PROJECT_DIR$/src/ecus/configs" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.solution">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="fuzzing-challenge" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -131,7 +125,8 @@
       <workItem from="1667726559224" duration="153000" />
       <workItem from="1667726720441" duration="2382000" />
       <workItem from="1667825547974" duration="1840000" />
-      <workItem from="1667981754433" duration="2831000" />
+      <workItem from="1667981754433" duration="6010000" />
+      <workItem from="1667998944182" duration="4658000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1666805082574</created>
@@ -175,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667572348281</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="progress">
+      <created>1667993549760</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667993549760</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,8 +200,8 @@
     <option name="LAST_COMMIT_MESSAGE" value="progress" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/fuzzing_challenge$solution.coverage" NAME="solution Coverage Results" MODIFIED="1667983951878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/fuzzing_challenge$main.coverage" NAME="main Coverage Results" MODIFIED="1667983941026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/fuzzing_challenge$solution.coverage" NAME="solution Coverage Results" MODIFIED="1668001230345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/fuzzing_challenge$main.coverage" NAME="main Coverage Results" MODIFIED="1668007027868" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/fuzzing_challenge$cansocket_python_can.coverage" NAME="cansocket_python_can Coverage Results" MODIFIED="1666801196079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/usr/local/lib/python3.9/site-packages/scapy/contrib" />
   </component>
 </project>

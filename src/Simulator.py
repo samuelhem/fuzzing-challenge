@@ -12,7 +12,7 @@ from scapy.contrib.isotp import ISOTPSocket
 import threading
 import logging
 
-load_layer("can")
+load_layer('can')
 load_contrib('cansocket')
 load_contrib('isotp')
 conf.contribs['ISOTP'] = {'use-can-isotp-kernel-module': False}
