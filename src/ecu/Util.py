@@ -1,4 +1,5 @@
 import re
+from random import randint
 
 
 def int_to_hex_tuple(int_val):
@@ -11,3 +12,16 @@ def int_to_hex_tuple(int_val):
     for hex_val in hex_ar:
         assembled += "\\x" + hex_val
     return assembled
+
+
+def generateTokenIfNotExists(token):
+    if token == "":
+        # if no token exists generate new one
+        alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        # Generate Token with following layout xxxx-xxxx-xxxx-xxxx
+        for i in range(1, 20):
+            if i % 5 == 0:
+                token += "-"
+            else:
+                token += alphabet[randint(0, 35)]
+    return token

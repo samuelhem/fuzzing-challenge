@@ -2,24 +2,31 @@
   "functions": [
     {
       "name": "Diagnose Engine Oil Level",
-      "identifier": "0x05"
+      "identifier": "0x100"
     },
     {
       "name": "Check Engine Coolant Level",
-      "identifier": "0x07"
+      "identifier": "0x300"
     },
     {
       "name": "Is Battery empty",
-      "identifier": "0x09"
+      "identifier": "0x500"
     },
     {
-      "name": "Security Access Routine",
-      "identifier": "0xff3d"
+      "name": "Not so Secret Offset",
+      "identifier": "0x200"
     },
     {
       "name": "Security Key",
-      "identifier": "0x135"
+      "identifier": "0x303"
+    },
+    {
+      "name": "Es wird wärmer...",
+      "identifier": "0x600"
+    },
+    {
+      "name": "SOLUTION",
+      "identifier": "0x603"
     }
-
   ]
 }

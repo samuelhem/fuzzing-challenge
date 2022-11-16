@@ -59,12 +59,26 @@ class Function:
                 resp.message = Util.int_to_hex_tuple(Security.createRandomKey())
                 # return early
                 return resp.answers(req)
+            # Return Key Offset that needs to be Added to the KEY
+            if req.routineIdentifier == config.SECURITY_OFFSET:
+                resp.state = 0x02
+                resp.message = Util.int_to_hex_tuple(Security.getOffset())
+                return resp.answers(req)
+
             # Can only ever be a good request if the Key is present
             if hasattr(req, "load"):
+                print(req.load)
                 if not Security.checkKey(int.from_bytes(req.load, 'big')):
                     print("NO ACCESS")
                     return False
                 else:
+                    # Solution Path
+                    if req.routineIdentifier == config.SUCCESS_FLAG:
+                        config.TOKEN = Util.generateTokenIfNotExists(config.TOKEN)
+                        resp.state = 0x02
+                        resp.message = config.TOKEN
+                        return resp.answers(req)
+
                     if req.routineControlType == 1:
                         resp.message = self.start()
                     elif req.routineControlType == 2:

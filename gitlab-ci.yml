@@ -1,0 +1,40 @@
+image: debian:latest
+
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+
+before_script:
+  - apt update
+  - apt install python3.8.10
+  - apt install git -y
+  - apt install python3-pip -y
+  - apt-get install tcpdump -y
+  - pip3 install setuptools
+  - bash -c `[ -d "/tmp/scapy_ansko" ] && (cd /tmp/scapy_ansko; git pull; cd -) || git clone https://github.com/secdev/scapy.git /tmp/scapy.ansko`
+  - mkdir -p build
+
+run:
+  tags:
+    - ansko_challenge
+  variables:
+    SystemdFolder: `etc/systemd/system`
+    ExeFolder: `opt/bin`
+    ChallengeName: `fuzzing-challenge`
+
+  script:
+    - mkdir build/$ChallengeName
+    - mkdir build/$ChallengeName/DEBIAN
+    - mkdir -p build/$ChallengeName/SystemdFolder
+    - mkdir -p build/$ChallengeName/$ExeFolder
+    - cp DebianPackage/* build/$ChallengeName/DEBIAN
+    - cp ServiceFiles/* build/$ChallengeName/$SystemdFolder
+    - cp -r src/* build/$ChallengeName/$ExeFolder
+    - chmod 775 build/$ChallengeName/DEBIAN/postinst
+    - chmod 775 build/$ChallengeName/DEBIAN/postrm
+    - chmod 775 build/$ChallengeName/DEBIAN/control
+    - dpkg-deb --build build/$ChallengeNAme
+  artifacts:
+    paths:
+    - build
