@@ -15,6 +15,11 @@
     {
       "name": "Security Access Routine",
       "identifier": "0xff3d"
+    },
+    {
+      "name": "Security Key",
+      "identifier": "0x135"
     }
+
   ]
 }

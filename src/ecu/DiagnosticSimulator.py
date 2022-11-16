@@ -9,10 +9,7 @@ def simulation(arg):
     # Basic Simulation
     print("Simulation now Running")
     arg.state = States.RUNNING
-    arg.runtime = randrange(0, 300)
-    if arg.identifier == hex(config.SECURITY_ACCESS_ID):
-        arg.runtime = 100000
-        print("SECURITY ACCESS GRANTED")
+    arg.runtime = randrange(50, 300)
 
     # Constantly Check for State Changes to Stop the Simulation
     arg.time_remaining = arg.runtime
@@ -34,3 +31,7 @@ def simulation(arg):
 def start_simulation(function):
     thread = Thread(target=simulation, args=(function,))
     thread.start()
+
+
+# TODO: close to another function
+# TODO: the provided key needs to be added with the fixed value close to another function
